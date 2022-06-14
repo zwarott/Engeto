@@ -49,16 +49,9 @@ else:
     quit()
 
 text_words = list()
-if (selected_text := input("Enter a number btw. 1 and 3 to select: ")) == "1":
-    for words in TEXTS[0].split():
-        clean_words = ''.join(filter(str.isalnum, words))
-        text_words.append(clean_words)
-elif (selected_text := input("Enter a number btw. 1 and 3 to select: ")) == "2":
-    for words in TEXTS[1].split():
-        clean_words = ''.join(filter(str.isalnum, words))
-        text_words.append(clean_words)
-elif (selected_text := input("Enter a number btw. 1 and 3 to select: ")) == "3":
-    for words in TEXTS[2].split():
+selected_text = int(input("Enter a number btw. 1 and 3 to select: "))
+if selected_text in (1, 2, 3):
+    for words in TEXTS[selected_text - 1].split():
         clean_words = ''.join(filter(str.isalnum, words))
         text_words.append(clean_words)
 else:
