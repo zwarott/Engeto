@@ -42,7 +42,7 @@ registred_users = {
 }
 separator = "-" * 40
 
-if registred_users.get(input_user_name := input("username: ")) == (input_user_password := input("password: ")):
+if registred_users.get(input_user_name := input("username: ")) == input("password: "):
     print(separator, f"Welcome to app, {input_user_name}.", "We have 3 texts to be analyzed.", separator, sep="\n")
 else:
     print("Unregistred user, terminating the program...")
@@ -88,10 +88,7 @@ print("LEN|     OCCURRENCES     |NR.", separator, sep="\n")
 
 words_len_count = {}
 for word in text_words:
-    if len(word) not in words_len_count:
-        words_len_count[len(word)] = 1
-    else:
-        words_len_count[len(word)] += 1
+    words_len_count[len(word)] = words_len_count.setdefault(len(word), 0) + 1
 
 for key, value in sorted(words_len_count.items()):
     nr = str(key).rjust(3)
